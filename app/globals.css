@@ -2,26 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+.textGradient {
+    background: -webkit-linear-gradient(#4338ca, #818cfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.purpleShadow {
+    box-shadow: 3px 3px 1px 1px rgba(230, 230, 250, 0.726);
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.purpleShadow:hover {
+    box-shadow: 0px 0px 1px 1px lavender;
+    transform: translate(3px, 3px);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.rounded-grid {
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.2) 2px, transparent 2px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 2px, transparent 2px);
+    background-size: 40px 40px;
+    background-position: center;
+    border-radius: 4px;
+    /* Slight rounding for grid lines */
+}
+
+.bgc {
+    background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
+}
+
+/* From Uiverse.io by Yaya12085 */
+
+.google-button {
+    margin-top: 1rem;
+    max-width: 320px;
+    display: flex;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    gap: 0.75rem;
+    color: rgb(65, 63, 63);
+    background-color: #fff;
+    cursor: pointer;
+    transition: all .6s ease;
+}
+
+.google-button svg {
+    height: 24px;
+}
+
+.google-button:hover {
+    transform: scale(1.02);
 }
