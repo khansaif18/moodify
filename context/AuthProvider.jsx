@@ -43,7 +43,7 @@ export default function AuthProvider({ children }) {
             // console.log(user);
         } catch (error) {
             console.log(error.email);
-            console.log(errorMessage);
+            console.log(error.Message);
             const credential = GoogleAuthProvider.credentialFromError(error);
             toast.error("Could not sign in, Try again")
         }
