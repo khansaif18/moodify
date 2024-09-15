@@ -106,7 +106,7 @@ export default function Dashboard() {
         })}
       </div>
       <h4 className={'text-5xl sm:text-6xl md:text-7xl text-center ' + fugaz.className}>
-        How Are You <span className='textGradient'>Feeling</span> Today?
+        How are you <span className='textGradient'>feeling</span> today?
       </h4>
       <div className='flex items-stretch flex-wrap gap-4'>
         {Object.keys(moods).map((mood, moodIndex) => {

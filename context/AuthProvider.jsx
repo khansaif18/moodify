@@ -40,10 +40,7 @@ export default function AuthProvider({ children }) {
             const token = credential.accessToken;
             const user = result.user;
             toast.success('Signed in succesfully')
-            // console.log(user);
         } catch (error) {
-            console.log(error.email);
-            console.log(error.Message);
             const credential = GoogleAuthProvider.credentialFromError(error);
             toast.error("Could not sign in, Try again")
         }
@@ -56,7 +53,6 @@ export default function AuthProvider({ children }) {
                 setLoading(true)
                 setCurrentUser(user)
                 if (!user) {
-                    console.log('No User Found')
                     return
                 }
 
@@ -70,7 +66,7 @@ export default function AuthProvider({ children }) {
                 setUserDataObj(firebaseData)
 
             } catch (error) {
-                console.log(error.message);
+                // console.log(error.message);
             } finally {
                 setLoading(false)
             }

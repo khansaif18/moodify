@@ -10,9 +10,10 @@ export default function CallToAction() {
     if (currentUser) {
         const userEmail = currentUser?.auth?.currentUser?.email
         const name = userEmail.split('@')[0];
+
         return (
             <div className='max-w-[600px] mx-auto w-full flex items-center justify-center gap-3'>
-                <Button disable={true} text={`Hello, ${name}`.toUpperCase()} />
+                <Button small disable={true} text={`Hello, ${name.toUpperCase()}`} />
                 <Link href={'/dashboard'}>
                     <Button dark full text="Go to dashboard" />
                 </Link>

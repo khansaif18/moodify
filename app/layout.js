@@ -10,13 +10,13 @@ const opensans = Open_Sans({ subsets: ["latin"] });
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] });
 
 export const metadata = {
-  title: "Moodify ",
+  title: "Moodify · Home",
   description: "Track your daily mood every day of the year!",
 };
 
 export default function RootLayout({ children }) {
   const header = (
-    <header className="p-4  flex items-center justify-between">
+    <header className="p-4 px-8 flex items-center justify-between">
       <Link href={'/'}>
         <h1 className={'text-2xl  textGradient ' + fugaz.className}>Moodify</h1>
       </Link>
