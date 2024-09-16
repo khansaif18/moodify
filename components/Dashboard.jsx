@@ -7,6 +7,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 import Loading from './Loading';
 import Login from './Login';
+import toast from 'react-hot-toast';
 
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] });
 
@@ -65,7 +66,8 @@ export default function Dashboard() {
         }
       }, { merge: true })
     } catch (err) {
-      console.log('Failed to set data: ', err.message)
+      // console.log('Failed to set data: ', err.message)
+      toast.error("Some error occured, try again")
     }
   }
 

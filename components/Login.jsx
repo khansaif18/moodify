@@ -43,7 +43,7 @@ export default function Login() {
             }
 
         } catch (err) {
-            console.log(err.message)
+            // console.log(err.message)
             if (err.message == 'Firebase: Error (auth/invalid-email).') toast.error('Invalid Email address')
             if (err.message == 'Firebase: Error (auth/invalid-credential).') toast.error('Invalid User Credentials')
             if (err.message == 'Firebase: Error (auth/email-already-in-use).') toast.error('This email already exists')
@@ -70,7 +70,10 @@ export default function Login() {
             </form>
             <p className='text-center'>{isRegister ? 'Already have an account? ' : 'Don\'t have an account? '}<button onClick={() => setIsRegister(!isRegister)} className='text-indigo-600'>{isRegister ? 'Sign in' : 'Sign up'}</button></p>
             <div className="googleAuth">
-                <SigninGoogleButton handleClick={signInWithGoogle} />
+                <SigninGoogleButton handleClick={() => {
+                    signInWithGoogle()
+                        .then(() => router.push('/'))
+                }} />
             </div>
         </div>
     )

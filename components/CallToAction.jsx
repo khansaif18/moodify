@@ -8,8 +8,13 @@ export default function CallToAction() {
     const { currentUser } = useAuth()
 
     if (currentUser) {
-        const userEmail = currentUser?.auth?.currentUser?.email
-        const name = userEmail.split('@')[0];
+        let name
+        if (currentUser.displayName) {
+            name = currentUser?.displayName.split(' ')[0]
+        }
+        else {
+            name = currentUser?.auth?.currentUser?.email.split('@')[0].slice(0, 10);
+        }
 
         return (
             <div className='max-w-[600px] mx-auto w-full flex items-center justify-center gap-3'>
