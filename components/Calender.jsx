@@ -13,13 +13,23 @@ const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] });
 
 export default function Calendar(props) {
     const { demo, completeData, handleSetMood } = props
+
     const now = new Date()
     const currMonth = now.getMonth()
-    const [selectedMonth, setSelectMonth] = useState(Object.keys(months)[currMonth])
+    const [selectedMonth, setSelectMonth] = useState(monthsArr[currMonth])
     const [selectedYear, setSelectedYear] = useState(now.getFullYear())
 
     const numericMonth = monthsArr.indexOf(selectedMonth)
     const data = completeData?.[selectedYear]?.[numericMonth] || {}
+
+    const monthNow = new Date(selectedYear, numericMonth, 1)
+    const firstDayOfMonth = monthNow.getDay()
+
+    const daysInMonth = new Date(selectedYear, numericMonth + 1, 0).getDate()
+
+    const daysToDisplay = firstDayOfMonth + daysInMonth
+    const numRows = Math.floor(daysToDisplay / 7) + (daysToDisplay % 7 ? 1 : 0)
+
 
     function handleIncrementMonth(val) {
         // value +1 -1
@@ -37,13 +47,6 @@ export default function Calendar(props) {
         }
     }
 
-    const monthNow = new Date(selectedYear, Object.keys(months).indexOf(selectedMonth), 1)
-    const firstDayOfMonth = monthNow.getDay()
-    const daysInMonth = new Date(selectedYear, Object.keys(selectedMonth).indexOf(selectedMonth) + 1, 0).getDate()
-
-    const daysToDisplay = firstDayOfMonth + daysInMonth
-
-    const numRows = (Math.floor(daysToDisplay / 7)) + (daysToDisplay % 7 ? 1 : 0)
 
     return (
         <div className='flex flex-col gap-2'>

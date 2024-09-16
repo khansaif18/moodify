@@ -78,6 +78,8 @@ export default function Dashboard() {
     'Elated': '😍',
   }
 
+  const moodEmojis = ["😭", "😢", "😐", "😊", "😍"];
+
   useEffect(() => {
     if (!currentUser || !userDataObj) {
       return
@@ -100,13 +102,13 @@ export default function Dashboard() {
           return (
             <div key={statusIndex} className=' flex flex-col gap-1 sm:gap-2 items-center'>
               <p className=' capitalize font-semibold text-sm truncate'>{status.replaceAll('_', ' ')}</p>
-              <p className={'text-base sm:text-lg truncate ' + fugaz.className}>{statuses[status]}{status === 'total_days' ? ' 🔥' : ''}</p>
+              <p className={'text-base sm:text-lg truncate ' + fugaz.className}>{statuses[status]} {status === 'average_mood' ? moodEmojis[statuses[status] - 1] : ''}{status === 'total_days' ? ' 🔥' : ''}</p>
             </div>
           )
         })}
       </div>
       <h4 className={'text-5xl sm:text-6xl md:text-7xl text-center ' + fugaz.className}>
-        How are you <span className='textGradient'>feeling</span> today?
+        How are yu <span className='textGradient'>feeling</span> today?
       </h4>
       <div className='flex items-stretch flex-wrap gap-4'>
         {Object.keys(moods).map((mood, moodIndex) => {

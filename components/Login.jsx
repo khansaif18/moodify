@@ -5,6 +5,7 @@ import Button from './Button';
 import { useAuth } from '@/context/AuthProvider';
 import toast from 'react-hot-toast';
 import SigninGoogleButton from './SigninGoogleButton';
+import { useRouter } from 'next/navigation';
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] });
 
 export default function Login() {
@@ -14,6 +15,8 @@ export default function Login() {
     const [authenticating, setAuthenticating] = useState(false)
 
     const { signup, login, signInWithGoogle } = useAuth()
+
+    const router = useRouter()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -30,10 +33,12 @@ export default function Login() {
             if (isRegister) {
                 // console.log('Signing up a new user')
                 await signup(email, password)
+                router.push('/')
                 toast.success('Signed in Successfully')
             } else {
                 // console.log('Logging in existing user')
                 await login(email, password)
+                router.push('/')
                 toast.success('Logged in Successfully')
             }
 

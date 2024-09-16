@@ -2,14 +2,14 @@
 import React from 'react'
 import Button from './Button'
 import { useAuth } from '@/context/AuthProvider'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { auth } from '@/firebase'
 import toast from 'react-hot-toast'
 
 export default function Logout() {
     const { logout, currentUser } = useAuth()
     const pathname = usePathname()
+    const router = useRouter()
 
     if (!currentUser) {
         return null
@@ -25,8 +25,10 @@ export default function Logout() {
 
     return (
         <Button text='Logout' clickHandler={() => {
-            logout()
-            toast.success('Logged out Successfully!')
+            logout().then(() => {
+                router.push('/')
+                toast.success('Logged out Successfully!')
+            })
         }} />
     )
 }
